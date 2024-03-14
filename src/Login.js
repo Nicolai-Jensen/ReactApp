@@ -12,15 +12,29 @@ export function Login() {
     setPassword(event.target.value);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    // You can handle form submission here, such as sending the data to a backend server
-    console.log("Username:", username);
-    console.log("Password:", password);
-    // Reset the form fields after submission
-    setUsername("");
-    setPassword("");
-  };
+    try {
+        const response = await fetch("http://react.tsanas.com/authentication/login", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+            body: JSON.stringify({ username, password }),
+        });
+  
+        if (!response.ok) {
+          throw new Error("Failed to login");
+        }
+  
+        // Handle success, maybe redirect user or update state
+        console.log("Login successful");
+      } catch (error) {
+        // Handle error, maybe show an error message to the user
+        console.error("Login failed:", error.message);
+      }
+    };
+  
 
   return (
     <form onSubmit={handleSubmit}>
