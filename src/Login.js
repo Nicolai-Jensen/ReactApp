@@ -23,12 +23,23 @@ export function Login() {
             body: JSON.stringify({ username, password }),
         });
   
-        if (!response.ok) {
-          throw new Error("Failed to login");
-        }
-  
-        // Handle success, maybe redirect user or update state
-        console.log("Login successful");
+        const responseData = await response.json();
+
+    if (response.ok) {
+      if (responseData.success) {
+        // Login successful, retrieve the token
+        const token = responseData.data;
+        console.log("Login successful. Token:", token);
+        // Handle token (e.g., store it in local storage)
+      } else {
+        // Login failed due to incorrect credentials
+        console.error("Login failed: Incorrect username or password.");
+      }
+    } else {
+      // Server returned an error status code
+      throw new Error("Failed to login. Server returned " + response.status);
+    }
+        
       } catch (error) {
         // Handle error, maybe show an error message to the user
         console.error("Login failed:", error.message);
