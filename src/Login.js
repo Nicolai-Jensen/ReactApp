@@ -57,6 +57,7 @@ export function Login(props) {
     <form onSubmit={handleSubmit}>
       <div>
         <label htmlFor="username">Username:</label>
+        <br/>
         <input
           type="text"
           id="username"
@@ -66,6 +67,7 @@ export function Login(props) {
       </div>
       <div>
         <label htmlFor="password">Password:</label>
+        <br/>
         <input
           type="password"
           id="password"
@@ -73,6 +75,7 @@ export function Login(props) {
           onChange={handlePasswordChange}
         />
       </div>
+      <br/>
       <button type="submit">Submit</button>
     </form>
     </>

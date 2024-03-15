@@ -1,6 +1,7 @@
 import React from "react"
 import {Login} from "./Login"
 import { DrawingChatBox } from "./ChatBoxs";
+import useGameServer from "./useGameServer";
 
 export function App(props){
     return(
@@ -16,16 +17,32 @@ class DrawGameWorld extends React.Component{
         this.state ={
             game: "John Cena",
             loginSuc: false,
-            token: ""
+            token: "",
+            gameServerObj: null
         };
+    }
+    componentDidMount() {
+        // Using the useGameServer hook here
+        if (this.state.loginSuc && this.state.token) {
+            const gameServer = useGameServer("http://react.tsanas.com/gamehub", this.state.token, this.handleConnectionClosed);
+
+            // Store the gameServer object in state
+            this.setState({ gameServerObj: gameServer }); 
+        }
     }
 
     handleLoginSuccess = (token) => {
         this.setState({
             loginSuc: true,
-            token: token
+            token: token,
         });
+    }; 
+
+    handleConnectionClosed = () => {
+        // Handle connection closed
     };
+    
+
 
     render(){
         return(
