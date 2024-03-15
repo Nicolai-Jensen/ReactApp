@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 
-export function Login() {
+export function Login(props) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  document.title = "Login Page";
+
 
   const handleUsernameChange = (event) => {
     setUsername(event.target.value);
@@ -30,10 +32,13 @@ export function Login() {
         // Login successful, retrieve the token
         const token = responseData.data;
         console.log("Login successful. Token:", token);
+        //props.token = token;
+        props.onLoginSuccess(token); // Call the onLoginSuccess prop with the token
         // Handle token (e.g., store it in local storage)
       } else {
         // Login failed due to incorrect credentials
         console.error("Login failed: Incorrect username or password.");
+        alert("Login failed: Incorrect username or password")
       }
     } else {
       // Server returned an error status code
@@ -48,6 +53,7 @@ export function Login() {
   
 
   return (
+    <>
     <form onSubmit={handleSubmit}>
       <div>
         <label htmlFor="username">Username:</label>
@@ -69,5 +75,6 @@ export function Login() {
       </div>
       <button type="submit">Submit</button>
     </form>
+    </>
   );
 }
