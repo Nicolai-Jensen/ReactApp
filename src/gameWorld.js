@@ -45,9 +45,9 @@ class DrawGameWorld extends React.Component{
     }
     
     handleChat(props){
-        this.state.gameServerObj.onEvent()=> {
+        this.state.gameServerObj.onEvent("", response => {
             console.log("Something happend")
-        }
+        });
     }
 
     render(){
