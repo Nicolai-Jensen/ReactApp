@@ -33,20 +33,16 @@ export function Login(props) {
         const token = responseData.data;
         console.log("Login successful. Token:", token);
         //props.token = token;
-        props.onLoginSuccess(token); // Call the onLoginSuccess prop with the token
-        // Handle token (e.g., store it in local storage)
+        props.onLoginSuccess(token);
       } else {
-        // Login failed due to incorrect credentials
         console.error("Login failed: Incorrect username or password.");
         alert("Login failed: Incorrect username or password")
       }
     } else {
-      // Server returned an error status code
       throw new Error("Failed to login. Server returned " + response.status);
     }
         
       } catch (error) {
-        // Handle error, maybe show an error message to the user
         console.error("Login failed:", error.message);
       }
     };
