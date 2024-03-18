@@ -1,7 +1,7 @@
 import React from "react"
 import {Login} from "./Login"
-import { DrawingChatBox } from "./ChatBoxs";
-import useGameServer from "./useGameServer";
+import {GameState} from "./game"
+
 
 export function App(props){
     return(
@@ -17,45 +17,26 @@ class DrawGameWorld extends React.Component{
         this.state ={
             game: "John Cena",
             loginSuc: false,
-            token: "",
-            gameServerObj: null
+            token: ""
         };
     }
 
     handleLoginSuccess = (token) => {
         this.setState({
-            loginSuc: true,
             token: token,
+            loginSuc: true,
+            
         });
     }; 
-
-    handleConnectionClosed = () => {
-        // Handle connection closed
-    };
     
-    componentDidMount() {
-        // Using the useGameServer hook here
-        if (this.state.loginSuc && this.state.token) {
-            const gameServer = useGameServer("http://react.tsanas.com/gamehub", this.state.token, this.handleConnectionClosed);
-
-            // Store the gameServer object in state
-            this.setState({ gameServerObj: gameServer }); 
-        }
-        console.log(this.state.gameServerObj);
-    }
     
-    handleChat(props){
-        this.state.gameServerObj.onEvent("", response => {
-            console.log("Something happend")
-        });
-    }
 
     render(){
         return(
             <>
                 <h1>Title of the is {this.state.game}</h1>
                 {!this.state.loginSuc && <Login onLoginSuccess={this.handleLoginSuccess} />}
-                {this.state.loginSuc && <DrawingChatBox props/>}
+                {this.state.loginSuc && <GameState token={this.state.token} />}
             </>
         );
     }
