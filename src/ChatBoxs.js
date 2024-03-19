@@ -6,7 +6,14 @@ export function DrawingChatBox(props) {
     const chatBoxRef = useRef(null);
 
     const handleMessageChange = (event) => {
-        setMessage(event.target.value);
+        var tmp = event.target.value
+        if(tmp.length >= 100){
+            return;
+        }
+        else{
+            setMessage(event.target.value);
+        }
+
     };
 
     const handleSubmit = (event) => {
