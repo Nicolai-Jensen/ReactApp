@@ -36,14 +36,18 @@ class DrawGameWorld extends React.Component{
     componentDidMount() {
         // Using the useGameServer hook here
         if (this.state.loginSuc && this.state.token) {
-            const gameServer = useGameServer("http://react.tsanas.com/gamehub", this.state.token, this.handleConnectionClosed);
-
-            // Store the gameServer object in state
-            this.setState({ gameServerObj: gameServer }); 
+            const [gameServer, SetGameServer] = useGameServer(
+                "http://react.tsanas.com/gamehub", 
+                this.props.state.token, 
+                this.props.state.handleConnectionClosed
+                ); 
         }
         console.log(this.state.gameServerObj);
     }
-    
+    updateGameServer(){
+        
+    }
+
     handleChat(props){
         this.state.gameServerObj.onEvent("", response => {
             console.log("Something happend")
