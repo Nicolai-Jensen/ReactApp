@@ -1,23 +1,10 @@
 import React, { useRef, useState, useEffect } from "react";
 
-export function DrawingChatBox(props) {
-    const [message, setMessage] = useState("");
+export function DrawingCombatLog(props) {
     const [messages, setMessages] = useState([]);
     const chatBoxRef = useRef(null);
 
-    const handleMessageChange = (event) => {
-        setMessage(event.target.value);
-    };
-
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        if (message.trim() !== "") {
-            props.gameServer.invoke("Chat", message)
-            // Clear the input field
-            setMessage("");
-        }
-    };
-    props.gameServer.onEvent("ChatMessage", response => {
+    props.gameServer.onEvent("CombatMessage", response => {
         // Add message to the list of messages
         setMessages([...messages, response]);
     });
@@ -29,7 +16,7 @@ export function DrawingChatBox(props) {
 
     return (
         <>
-            <h4>ChatBox</h4>
+            <h4>CombatLog</h4>
             <div
                 style={{
                     height: "150px", // Set the height of the chat box
@@ -45,19 +32,6 @@ export function DrawingChatBox(props) {
                 {messages.map((msg, index) => (
                     <div key={index}>{msg}</div>
                 ))}
-            </div>
-            <div>
-                {/* Input field and submit button */}
-                <form onSubmit={handleSubmit}>
-                    <input
-                        type="text"
-                        value={message}
-                        onChange={handleMessageChange}
-                        placeholder="Type your message..."
-                        style={{ width: "calc(50% - 70px)", marginRight: "10px" }}
-                    />
-                    <button type="submit">Send</button>
-                </form>
             </div>
         </>
     );

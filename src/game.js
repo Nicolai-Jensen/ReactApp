@@ -1,6 +1,7 @@
 import React from "react"
 import useGameServer from "./useGameServer";
 import { DrawingChatBox } from "./ChatBoxs";
+import { DrawingCombatLog } from "./combatLog";
 import {World} from "./visual"
 
 export function GameState(props) {
@@ -12,6 +13,7 @@ export function GameState(props) {
         <>
         <World />
         <DrawingChatBox gameServer = {gameServer}/>
+        <DrawingCombatLog gameServer = {gameServer}/>
         </>
     )
 }
