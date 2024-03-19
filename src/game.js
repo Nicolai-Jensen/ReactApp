@@ -10,7 +10,7 @@ export function GameState(props) {
 
     return (
         <>
-        <World />
+        <World gameServer = {gameServer}/>
         <DrawingChatBox gameServer = {gameServer}/>
         </>
     )
