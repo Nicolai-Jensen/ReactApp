@@ -6,6 +6,7 @@ import {World} from "./visual"
 export function GameState(props) {
     const { token } = props;
     const gameServer = useGameServer("http://react.tsanas.com/gamehub", token, handleConnectionClosed);
+    gameServer.connect();
 
     return (
         <>

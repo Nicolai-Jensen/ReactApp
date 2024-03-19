@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 export function World(){
     return (
         <>
-        <h1>HEY</h1>
+        <h1>GameScreen will be shown here</h1>
         </>
     )
 }
