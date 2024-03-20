@@ -1,3 +1,4 @@
+import { getValue } from "@testing-library/user-event/dist/utils";
 import React, { useRef, useState, useEffect } from "react";
 
 export function DrawingCombatLog(props) {

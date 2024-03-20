@@ -15,7 +15,6 @@ class DrawGameWorld extends React.Component{
         super(props);
 
         this.state ={
-            game: "John Cena",
             loginSuc: false,
             token: ""
         };
@@ -28,15 +27,20 @@ class DrawGameWorld extends React.Component{
             
         });
     }; 
+    /*handleDisError =() =>{
+        this.setState({
+            token:null,
+            loginSuc: false
+        });
+    }*/
     
     
 
     render(){
         return(
             <>
-                <h1>Title of the is {this.state.game}</h1>
                 {!this.state.loginSuc && <Login onLoginSuccess={this.handleLoginSuccess} />}
-                {this.state.loginSuc && <GameState token={this.state.token} />}
+                {this.state.loginSuc && <GameState token={this.state.token}/>}
             </>
         );
     }
