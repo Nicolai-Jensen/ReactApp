@@ -2,6 +2,20 @@ import React, { useState, useEffect } from "react";
 import './game.css';
 
 const GridContainer = (props) => {
+    const [effectVisibility, setEffectVisibility] = useState([]);
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setEffectVisibility(new Array(props.effects.length).fill(false));
+        }, 150);
+
+        return () => clearTimeout(timer); // Clear timeout on unmount
+    }, [props.effects]); // Re-run effect when props.effects changes
+
+    useEffect(() => {
+        setEffectVisibility(new Array(props.effects.length).fill(true));
+    }, [props.effects]); // Re-run effect when props.effects changes
+    
     return (
         <div className="grid-container">
             {/* Render ground tiles */}
@@ -37,7 +51,7 @@ const GridContainer = (props) => {
                     <img
                         key={index}
                         className={`grid-item effect ${tile.flipped ? 'flip' : ''}`}
-                        style={{ left: tile.xpos * 48, top: tile.ypos * 48 }}
+                        style={{ left: tile.xpos * 48, top: tile.ypos * 48, visibility: effectVisibility[index] ? 'visible' : 'hidden' }}
                         src={`./tiles/tile_${tile.tile}.png`}
                     />
                 ))}
@@ -71,8 +85,6 @@ export function World(props) {
 
         });
     },);
-
-    //console.log(movables);
     
 
 
