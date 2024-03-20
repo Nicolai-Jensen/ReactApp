@@ -1,15 +1,15 @@
 import React from "react";
 
 export function LogOutButton(props) {
+    const { handleDisError, gameServer } = props;
 
-    function handleClick(){
-        props.gameServer.disconnect()
-        console.log("disconnect has been done")
-    }
+    const handleLogout = () => {
+        // Call handleDisError function when logout button is clicked
+        gameServer.disconnect();
+        handleDisError();
+    };
+
     return (
-        <>
-            <button onClick={handleClick}>LogOut</button>
-        </>
+        <button onClick={handleLogout}>Log Out</button>
     );
 }
-
