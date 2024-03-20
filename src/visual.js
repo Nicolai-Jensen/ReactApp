@@ -24,7 +24,7 @@ const GridContainer = (props) => {
                     key={index}
                     className="grid-item ground"
                     src={`./tiles/tile_${tile}.png`}
-                    style={{ width: '24px', height: '24px' }} // Scale down ground tiles to half size
+                    style={{ width: '48px', height: '48px' }} // Scale down ground tiles to half size
                 />
 
             ))}
@@ -34,7 +34,7 @@ const GridContainer = (props) => {
                 <img
                     key={index}
                     className={`grid-item movable ${tile.id} ${tile.flipped ? 'flip' : ''}`}
-                    style={{ left: !isNaN(tile.xpos) ? tile.xpos * 24 : 0, top: !isNaN(tile.ypos) ? tile.ypos * 24 : 0, width: '24px', height: '24px' }} // Scale down other tiles to half size
+                    style={{ left: !isNaN(tile.xpos) ? tile.xpos * 48 : 0, top: !isNaN(tile.ypos) ? tile.ypos * 48 : 0, width: '48px', height: '48px' }} // Scale down other tiles to half size
                     src={`./tiles/tile_${tile.tile}.png`}
                 />
             ))};
@@ -43,7 +43,7 @@ const GridContainer = (props) => {
                 <img
                     key={index}
                     className={`grid-item clutter ${tile.id} ${tile.flipped ? 'flip' : ''}`}
-                    style={{ left: !isNaN(tile.xpos) ? tile.xpos * 24 : 0, top: !isNaN(tile.ypos) ? tile.ypos * 24 : 0, width: '24px', height: '24px' }} // Scale down clutter tiles to half size
+                    style={{ left: !isNaN(tile.xpos) ? tile.xpos * 48 : 0, top: !isNaN(tile.ypos) ? tile.ypos * 48 : 0, width: '48px', height: '48px' }} // Scale down clutter tiles to half size
                     src={`./tiles/tile_${tile.tile}.png`}
                 />
             ))};
@@ -53,7 +53,7 @@ const GridContainer = (props) => {
                     <img
                         key={index}
                         className={`grid-item effect ${tile.id} ${tile.flipped ? 'flip' : ''}`}
-                        style={{ left: !isNaN(tile.xpos) ? tile.xpos * 24 : 0, top: !isNaN(tile.ypos) ? tile.ypos * 24 : 0, width: '24px', height: '24px' }} // Scale down effect tiles to half size
+                        style={{ left: !isNaN(tile.xpos) ? tile.xpos * 48 : 0, top: !isNaN(tile.ypos) ? tile.ypos * 48 : 0, width: '48px', height: '48px' }} // Scale down effect tiles to half size
                         src={`./tiles/tile_${tile.tile}.png`}
                     />
                 ))}

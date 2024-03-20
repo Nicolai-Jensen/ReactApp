@@ -1,12 +1,12 @@
 .grid-container {
   position: relative;
   display: grid;
-  grid-template-columns: repeat(25, 24px); /* repeat width */
+  grid-template-columns: repeat(25, 48px); /* repeat width */
 }
 
 .grid-item {
-  height: 24px;
-  width: 24px;
+  height: 48px;
+  width: 48px;
   object-fit: fill;
   image-rendering: pixelated;
 }
