@@ -2,8 +2,9 @@ import React from "react";
 import useGameServer from "./useGameServer";
 import { DrawingChatBox } from "./ChatBoxs";
 import { DrawingCombatLog } from "./combatLog";
-import { World } from "./visual";
 import { LogOutButton } from "./logOutBut";
+import {World} from "./visual"
+import {Controls} from "./controls";
 
 export function GameState(props) {
     const { token } = props;
@@ -15,6 +16,7 @@ export function GameState(props) {
     return (
         <>
             <World gameServer={gameServer} />
+            <Controls gameServer = {gameServer}/>
             <LogOutButton/>
             <div className="container">
                 <div className="box-container">
