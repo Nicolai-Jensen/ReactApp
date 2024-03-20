@@ -17,8 +17,8 @@ const GridContainer = (props) => {
             {props.movables.map((tile, index) => (
                 <img
                     key={index}
-                    className={`grid-item ${tile.id} ${tile.flipped ? 'flip' : ''}`}
-                    style={{ left: !isNaN(tile.xpos) ? tile.xpos * 48 : 0, top: !isNaN(tile.ypos) ? tile.ypos * 48 : 0 }}
+                    className={`grid-item movable ${tile.flipped ? 'flip' : ''}`}
+                    style={{ left: tile.xpos * 48, top: tile.ypos * 48}}
                     src={`./tiles/tile_${tile.tile}.png`}
                 />
             ))};
@@ -26,8 +26,8 @@ const GridContainer = (props) => {
             {props.clutter.map((tile, index) => (
                 <img
                     key={index}
-                    className={`grid-item ${tile.id} ${tile.flipped ? 'flip' : ''}`}
-                    style={{ left: !isNaN(tile.xpos) ? tile.xpos * 48 : 0, top: !isNaN(tile.ypos) ? tile.ypos * 48 : 0 }}
+                    className={`grid-item clutter ${tile.flipped ? 'flip' : ''}`}
+                    style={{ left: tile.xpos * 48, top: tile.ypos * 48}}
                     src={`./tiles/tile_${tile.tile}.png`}
                 />
             ))};
@@ -36,8 +36,8 @@ const GridContainer = (props) => {
                 props.effects.map((tile, index) => (
                     <img
                         key={index}
-                        className={`grid-item ${tile.id} ${tile.flipped ? 'flip' : ''}`}
-                        style={{ left: !isNaN(tile.xpos) ? tile.xpos * 48 : 0, top: !isNaN(tile.ypos) ? tile.ypos * 48 : 0 }}
+                        className={`grid-item effect ${tile.flipped ? 'flip' : ''}`}
+                        style={{ left: tile.xpos * 48, top: tile.ypos * 48 }}
                         src={`./tiles/tile_${tile.tile}.png`}
                     />
                 ))}
@@ -73,6 +73,7 @@ export function World(props) {
     },);
 
     //console.log(movables);
+    
 
 
     return (
