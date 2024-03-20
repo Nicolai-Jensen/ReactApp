@@ -15,7 +15,7 @@ const GridContainer = (props) => {
     useEffect(() => {
         setEffectVisibility(new Array(props.effects.length).fill(true));
     }, [props.effects]); // Re-run effect when props.effects changes
-    
+
     return (
         <div className="grid-container">
             {/* Render ground tiles */}
@@ -37,7 +37,7 @@ const GridContainer = (props) => {
                     style={{ left: !isNaN(tile.xpos) ? tile.xpos * 48 : 0, top: !isNaN(tile.ypos) ? tile.ypos * 48 : 0, width: '48px', height: '48px' }} // Scale down other tiles to half size
                     src={`./tiles/tile_${tile.tile}.png`}
                 />
-            ))};
+            ))}
 
             {props.clutter.map((tile, index) => (
                 <img
@@ -46,7 +46,7 @@ const GridContainer = (props) => {
                     style={{ left: !isNaN(tile.xpos) ? tile.xpos * 48 : 0, top: !isNaN(tile.ypos) ? tile.ypos * 48 : 0, width: '48px', height: '48px' }} // Scale down clutter tiles to half size
                     src={`./tiles/tile_${tile.tile}.png`}
                 />
-            ))};
+            ))}
 
             {
                 props.effects.map((tile, index) => (
@@ -61,6 +61,17 @@ const GridContainer = (props) => {
     );
 };
 
+const DrawingInfo = (props) => {
+    const { biome, xpos, ypos } = props.info;
+
+    return (
+        <div className="info-container">
+            <p><span style={{ fontWeight: 'bold' }}>Biome</span>: {biome}
+            ........ <span style={{ fontWeight: 'bold' }}>PosX</span> : {xpos}
+            ........ <span style={{ fontWeight: 'bold' }}>PosY:</span> : {ypos}</p>
+        </div>
+    );
+}
 export function World(props) {
     const gameServerObj = props.gameServer;
     const [info, setInfo] = useState({});
@@ -87,12 +98,13 @@ export function World(props) {
 
         });
     },);
-    
+
 
 
     return (
         <>
             <GridContainer info={info} ground={ground} movables={movables} clutter={clutter} effects={effects} /> {/* Include the grid container component */}
+            <DrawingInfo info={info} />
         </>
     );
 }

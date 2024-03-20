@@ -27,12 +27,12 @@ class DrawGameWorld extends React.Component{
             
         });
     }; 
-    /*handleDisError =() =>{
+    handleDisError =() =>{
         this.setState({
             token:null,
             loginSuc: false
         });
-    }*/
+    }
     
     
 
@@ -40,7 +40,7 @@ class DrawGameWorld extends React.Component{
         return(
             <>
                 {!this.state.loginSuc && <Login onLoginSuccess={this.handleLoginSuccess} />}
-                {this.state.loginSuc && <GameState token={this.state.token}/>}
+                {this.state.loginSuc && <GameState token={this.state.token} handleDisError={this.handleDisError}/>}
             </>
         );
     }
