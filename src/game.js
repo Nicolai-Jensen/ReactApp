@@ -8,7 +8,6 @@ import {Controls} from "./controls";
 
 export function GameState(props) {
     const { token } = props;
-    //const {loginSucc} = props.loginSuc
     const gameServer = useGameServer("http://react.tsanas.com/gamehub", token, handleConnectionClosed);
     gameServer.connect();
     document.title = "ReactGame";
