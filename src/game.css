@@ -1,12 +1,12 @@
 .grid-container {
   position: relative;
   display: grid;
-  grid-template-columns: repeat(25, 48px); /* repeat width */
+  grid-template-columns: repeat(25, 24px); /* repeat width */
 }
 
 .grid-item {
-  height: 48px;
-  width: 48px;
+  height: 24px;
+  width: 24px;
   object-fit: fill;
   image-rendering: pixelated;
 }
@@ -44,4 +44,16 @@
   -o-transform: scaleX(-1);
   -webkit-transform: scaleX(-1);
   transform: scaleX(-1);
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+}
+
+.box-container {
+  width: 500px;
+  height: 100spx;
+  justify-content: center;
+  align-items: center;
 }

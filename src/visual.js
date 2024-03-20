@@ -10,7 +10,9 @@ const GridContainer = (props) => {
                     key={index}
                     className="grid-item ground"
                     src={`./tiles/tile_${tile}.png`}
+                    style={{ width: '24px', height: '24px' }} // Scale down ground tiles to half size
                 />
+
             ))}
 
             {/* Render other tiles */}
@@ -18,7 +20,7 @@ const GridContainer = (props) => {
                 <img
                     key={index}
                     className={`grid-item ${tile.id} ${tile.flipped ? 'flip' : ''}`}
-                    style={{ left: !isNaN(tile.xpos) ? tile.xpos * 48 : 0, top: !isNaN(tile.ypos) ? tile.ypos * 48 : 0 }}
+                    style={{ left: !isNaN(tile.xpos) ? tile.xpos * 24 : 0, top: !isNaN(tile.ypos) ? tile.ypos * 24 : 0, width: '24px', height: '24px' }} // Scale down other tiles to half size
                     src={`./tiles/tile_${tile.tile}.png`}
                 />
             ))};
@@ -27,7 +29,7 @@ const GridContainer = (props) => {
                 <img
                     key={index}
                     className={`grid-item ${tile.id} ${tile.flipped ? 'flip' : ''}`}
-                    style={{ left: !isNaN(tile.xpos) ? tile.xpos * 48 : 0, top: !isNaN(tile.ypos) ? tile.ypos * 48 : 0 }}
+                    style={{ left: !isNaN(tile.xpos) ? tile.xpos * 24 : 0, top: !isNaN(tile.ypos) ? tile.ypos * 24 : 0, width: '24px', height: '24px' }} // Scale down clutter tiles to half size
                     src={`./tiles/tile_${tile.tile}.png`}
                 />
             ))};
@@ -37,7 +39,7 @@ const GridContainer = (props) => {
                     <img
                         key={index}
                         className={`grid-item ${tile.id} ${tile.flipped ? 'flip' : ''}`}
-                        style={{ left: !isNaN(tile.xpos) ? tile.xpos * 48 : 0, top: !isNaN(tile.ypos) ? tile.ypos * 48 : 0 }}
+                        style={{ left: !isNaN(tile.xpos) ? tile.xpos * 24 : 0, top: !isNaN(tile.ypos) ? tile.ypos * 24 : 0, width: '24px', height: '24px' }} // Scale down effect tiles to half size
                         src={`./tiles/tile_${tile.tile}.png`}
                     />
                 ))}

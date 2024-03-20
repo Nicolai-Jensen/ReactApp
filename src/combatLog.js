@@ -20,10 +20,9 @@ export function DrawingCombatLog(props) {
             <div
                 style={{
                     height: "150px", // Set the height of the chat box
-                    width: "calc(50%)",// set the widht to 50% of screen size
+                    width: "calc(80%)",// set the widht to 50% of screen size
                     overflowY: "auto", // Enable vertical scrolling for overflow content
                     border: "1px solid #ccc",
-                    padding: "10px",
                     marginBottom: "20px" // Optional: Add some margin at the bottom
                 }}
                 ref={chatBoxRef} // Reference to the chat box div for scrolling

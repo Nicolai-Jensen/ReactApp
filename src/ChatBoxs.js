@@ -7,10 +7,10 @@ export function DrawingChatBox(props) {
 
     const handleMessageChange = (event) => {
         var tmp = event.target.value
-        if(tmp.length >= 100){
+        if (tmp.length >= 100) {
             return;
         }
-        else{
+        else {
             setMessage(event.target.value);
         }
 
@@ -36,14 +36,19 @@ export function DrawingChatBox(props) {
 
     return (
         <>
+            <div
+            style={{marginLeft: "20px"}}
+            >
             <h4>ChatBox</h4>
+
+            </div>
             <div
                 style={{
                     height: "150px", // Set the height of the chat box
-                    width: "calc(50%)",// set the widht to 50% of screen size
+                    width: "calc(80%)",// set the widht to 50% of screen size
                     overflowY: "auto", // Enable vertical scrolling for overflow content
                     border: "1px solid #ccc",
-                    padding: "10px",
+                    marginLeft: "20px", 
                     marginBottom: "20px" // Optional: Add some margin at the bottom
                 }}
                 ref={chatBoxRef} // Reference to the chat box div for scrolling
@@ -61,7 +66,7 @@ export function DrawingChatBox(props) {
                         value={message}
                         onChange={handleMessageChange}
                         placeholder="Type your message..."
-                        style={{ width: "calc(50% - 70px)", marginRight: "10px" }}
+                        style={{ width: "calc(50%)", marginLeft: "20px", marginBottom:"10px" }}
                     />
                     <button type="submit">Send</button>
                 </form>
