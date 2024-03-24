@@ -34,7 +34,7 @@ const GridContainer = (props) => {
                 <img
                     key={index}
                     className={`grid-item movable ${tile.id} ${tile.flipped ? 'flip' : ''}`}
-                    style={{ left: !isNaN(tile.xpos) ? tile.xpos * 48 : 0, top: !isNaN(tile.ypos) ? tile.ypos * 48 : 0, width: '48px', height: '48px' }} // Scale down other tiles to half size
+                    style={{ left: tile.xpos * 48, top: tile.ypos * 48, width: '48px', height: '48px' }} // Scale down other tiles to half size
                     src={`./tiles/tile_${tile.tile}.png`}
                 />
             ))}
@@ -43,7 +43,7 @@ const GridContainer = (props) => {
                 <img
                     key={index}
                     className={`grid-item clutter ${tile.id} ${tile.flipped ? 'flip' : ''}`}
-                    style={{ left: !isNaN(tile.xpos) ? tile.xpos * 48 : 0, top: !isNaN(tile.ypos) ? tile.ypos * 48 : 0, width: '48px', height: '48px' }} // Scale down clutter tiles to half size
+                    style={{ left: tile.xpos * 48, top: tile.ypos * 48, width: '48px', height: '48px' }} // Scale down clutter tiles to half size
                     src={`./tiles/tile_${tile.tile}.png`}
                 />
             ))}
@@ -53,7 +53,7 @@ const GridContainer = (props) => {
                     <img
                         key={index}
                         className={`grid-item effect ${tile.id} ${tile.flipped ? 'flip' : ''}`}
-                        style={{ left: !isNaN(tile.xpos) ? tile.xpos * 48 : 0, top: !isNaN(tile.ypos) ? tile.ypos * 48 : 0, width: '48px', height: '48px' }} // Scale down effect tiles to half size
+                        style={{ left: tile.xpos * 48, top: tile.ypos * 48, visibility: effectVisibility[index] ? 'visible' : 'hidden' }}
                         src={`./tiles/tile_${tile.tile}.png`}
                     />
                 ))}
